@@ -7,6 +7,14 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./modules').then((m) => m.HomeModule),
   },
+  {
+    path: 'hotCoffee',
+    loadChildren: () => import('./modules').then((m) => m.HotCoffeeModule),
+  },
+  {
+    path: 'icedCoffee',
+    loadChildren: () => import('./modules').then((m) => m.IcedCoffeeModule),
+  },
 ];
 
 @NgModule({
