@@ -1,3 +1,8 @@
+@import "swiper/scss";
+@import "swiper/scss/pagination";
+@import "swiper/scss/navigation";
+
+//background fancy word
 @keyframes background-pan {
   from {
     background-position: 0% center;
@@ -51,14 +56,53 @@
   }
 }
 
-.slide {
-  width: 80%;
-  overflow: scroll;
-  margin: 0 auto 12rem auto;
-  height: max-content;
+.galeryText {
+  text-align: center;
+}
 
-  .slide__container {
-    display: flex;
-    gap: 2rem;
+//slider
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  z-index: -10000;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #000;
+  border-radius: 10px;
+  padding: 0.2rem;
+  backdrop-filter: blur(8px);
+  transition: 0.3s ease-in;
+
+  &:hover {
+    color: #ecd8be;
   }
 }
