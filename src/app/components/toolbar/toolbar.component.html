@@ -1,11 +1,17 @@
-<mat-toolbar>
-  <span>My App</span>
+<mat-toolbar class="mat-toolbar">
+  <a routerLink="/home" class="mat-toolbar__home">
+    <img src="../../../assets/output-onlinegiftools.gif" alt="" width="35" />
+  </a>
   <span class="example-spacer"></span>
+
+  <p>
+    Coffee <a routerLink="/hotCoffee">🔥</a>/<a routerLink="/icedCoffee">🧊</a>
+  </p>
   <button
     mat-icon-button
     class="example-icon favorite-icon"
     aria-label="Example icon-button with heart icon"
   >
-    <mat-icon>favorite</mat-icon>
+    <mat-icon class="mat-icon">favorite</mat-icon>
   </button>
 </mat-toolbar>
