@@ -14,14 +14,20 @@
     <article class="footer__form">
       <h3>Keep in touch.</h3>
       <span>Newsletters</span>
-      <form action="" class="form">
+      <form
+        action=""
+        class="form"
+        [formGroup]="checkoutForm"
+        (ngSubmit)="onSubmit()"
+      >
         <input
           type="email"
           placeholder="email@email.com"
-          required
           autocomplete="email"
           name="email"
           class="text"
+          formControlName="email"
+          required
         />
         <input type="submit" class="btn" />
       </form>
