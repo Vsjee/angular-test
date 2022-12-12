@@ -8,6 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NgxBootstrapIconsModule, github, linkedin } from 'ngx-bootstrap-icons';
+
+const icons = {
+  github,
+  linkedin,
+};
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
     BrowserAnimationsModule,
     ToolbarComponent,
     FooterComponent,
+    NgxBootstrapIconsModule.pick(icons),
   ],
   providers: [],
   bootstrap: [AppComponent],
