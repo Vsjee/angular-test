@@ -8,7 +8,7 @@ export class GetCoffeeService {
   constructor(private http: HttpClient) {}
 
   // endopoints coffee/{hot || iced}
-  getCoffees() {
-    return this.http.get('https://api.sampleapis.com/coffee/');
+  getCoffees(endpoint: string) {
+    return this.http.get(`https://api.sampleapis.com/coffee/${endpoint}`);
   }
 }
