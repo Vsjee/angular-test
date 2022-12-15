@@ -2,16 +2,35 @@
   <a routerLink="/home" class="mat-toolbar__home">
     <img src="../../../assets/output-onlinegiftools.gif" alt="" width="35" />
   </a>
+
   <span class="example-spacer"></span>
 
-  <p>
-    Coffee <a routerLink="/hotCoffee">🔥</a>/<a routerLink="/icedCoffee">🧊</a>
-  </p>
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon class="mat-icon">favorite</mat-icon>
-  </button>
+  <span class="menu__responsive" *ngIf="menuHidde">
+    <p>
+      Coffee <a routerLink="/hotCoffee">🔥</a>/<a routerLink="/icedCoffee"
+        >🧊</a
+      >
+    </p>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+    >
+      <mat-icon class="mat-icon">favorite</mat-icon>
+    </button>
+  </span>
+
+  <span class="menuContainer" *ngIf="menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="menuBtn">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" class="menu">
+      <a routerLink="/hotCoffee">
+        <button mat-menu-item>Hot Coffee</button>
+      </a>
+      <a routerLink="/icedCoffee">
+        <button mat-menu-item>Iced Coffee</button>
+      </a>
+    </mat-menu>
+  </span>
 </mat-toolbar>

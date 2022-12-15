@@ -4,10 +4,13 @@
   background-size: cover;
   position: fixed;
   z-index: 2;
-  padding: 1rem;
 
   .example-spacer {
     flex: 1 1 auto;
+  }
+
+  .menu__responsive {
+    display: inline-flex;
   }
 
   p {
@@ -28,5 +31,21 @@
     cursor: pointer;
     border: none;
     background: none;
+  }
+
+  .menuContainer {
+    display: grid;
+    place-items: center;
+  }
+
+  .menuBtn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: 0.4s ease-in;
+
+    &:hover {
+      color: #fff;
+    }
   }
 }
