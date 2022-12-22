@@ -22,6 +22,11 @@
     color: #000;
   }
 
+  .favorite__link {
+    display: grid;
+    place-content: center;
+  }
+
   .mat-toolbar__home {
     display: grid;
     place-content: center;

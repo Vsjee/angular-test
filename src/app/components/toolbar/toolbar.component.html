@@ -11,13 +11,15 @@
         >🧊</a
       >
     </p>
-    <button
-      mat-icon-button
-      class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon"
-    >
-      <mat-icon class="mat-icon">favorite</mat-icon>
-    </button>
+    <a routerLink="/favorites" class="favorite__link">
+      <button
+        mat-icon-button
+        class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon"
+      >
+        <mat-icon class="mat-icon">favorite</mat-icon>
+      </button>
+    </a>
   </span>
 
   <span class="menuContainer" *ngIf="menu">
