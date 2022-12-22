@@ -7,6 +7,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { publicRoutes } from 'src/app/models';
 import { AuthService } from 'src/app/services';
 
 @Injectable({
@@ -24,7 +25,7 @@ export class LoginGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['./login']);
+      this.router.navigate([`./${publicRoutes.LOGIN}`]);
       return false;
     }
 

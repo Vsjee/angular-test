@@ -4,6 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MatMenuModule } from '@angular/material/menu';
+import { publicRoutes, privateRoutes } from 'src/app/models';
 
 @Component({
   standalone: true,
@@ -19,6 +20,9 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent {
+  publicRoutes = publicRoutes;
+  privateRoutes = privateRoutes;
+
   menu: boolean = false;
   menuHidde: boolean = true;
 

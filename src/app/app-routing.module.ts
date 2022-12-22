@@ -1,27 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginGuard } from './guards';
+import { privateRoutes, publicRoutes } from './models';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
-    path: 'home',
+    path: `${publicRoutes.HOME}`,
     loadChildren: () => import('./modules').then((m) => m.HomeModule),
   },
   {
-    path: 'hotCoffee',
+    path: `${publicRoutes.HOTCOFFEE}`,
     loadChildren: () => import('./modules').then((m) => m.HotCoffeeModule),
   },
   {
-    path: 'icedCoffee',
+    path: `${publicRoutes.ICEDCOFFEE}`,
     loadChildren: () => import('./modules').then((m) => m.IcedCoffeeModule),
   },
   {
-    path: 'login',
+    path: `${publicRoutes.LOGIN}`,
     loadChildren: () => import('./modules').then((m) => m.LoginModule),
   },
   {
-    path: 'favorites',
+    path: `${privateRoutes.FAVORITES}`,
     loadChildren: () => import('./modules').then((m) => m.FavoritesModule),
     canActivate: [LoginGuard],
   },

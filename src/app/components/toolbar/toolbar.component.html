@@ -7,11 +7,12 @@
 
   <span class="menu__responsive" *ngIf="menuHidde">
     <p>
-      Coffee <a routerLink="/hotCoffee">🔥</a>/<a routerLink="/icedCoffee"
+      Coffee <a routerLink="{{ publicRoutes.HOTCOFFEE }}">🔥</a>/<a
+        routerLink="{{ publicRoutes.ICEDCOFFEE }}"
         >🧊</a
       >
     </p>
-    <a routerLink="/favorites" class="favorite__link">
+    <a routerLink="{{ privateRoutes.FAVORITES }}" class="favorite__link">
       <button
         mat-icon-button
         class="example-icon favorite-icon"
@@ -27,10 +28,10 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu" class="menu">
-      <a routerLink="/hotCoffee">
+      <a routerLink="{{ publicRoutes.HOTCOFFEE }}">
         <button mat-menu-item>Hot Coffee</button>
       </a>
-      <a routerLink="/icedCoffee">
+      <a routerLink="{{ publicRoutes.ICEDCOFFEE }}">
         <button mat-menu-item>Iced Coffee</button>
       </a>
     </mat-menu>
