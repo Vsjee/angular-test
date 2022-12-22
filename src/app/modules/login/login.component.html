@@ -1,0 +1,24 @@
+<section>
+  <form action="">
+    <input
+      [formControl]="name"
+      type="text"
+      class="input"
+      placeholder="Your name"
+      required
+    />
+    <input
+      [formControl]="password"
+      type="password"
+      class="input"
+      placeholder="Your password"
+      required
+    />
+    <input
+      type="button"
+      class="submit"
+      value="Create account"
+      (click)="handleSubmit()"
+    />
+  </form>
+</section>
