@@ -9,11 +9,12 @@ import { GetCoffeeService } from 'src/app/services';
 })
 export class IcedCoffeeComponent {
   coffeeData: CoffeeInfo[] = [];
+  endpoint: string = 'iced';
 
   constructor(private data: GetCoffeeService) {}
 
   ngOnInit() {
-    return this.data.getCoffees('iced').subscribe((data: any) => {
+    return this.data.getCoffees(this.endpoint).subscribe((data: any) => {
       this.coffeeData = data;
       console.log(data);
     });

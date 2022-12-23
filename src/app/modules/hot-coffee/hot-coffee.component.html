@@ -1,6 +1,6 @@
 <h1>Hot coffe</h1>
 <section class="container">
   <article *ngFor="let coffee of coffeeData" class="container__coffee">
-    <app-coffee-card [info]="coffee"></app-coffee-card>
+    <app-coffee-card [info]="coffee" [endpoint]="endpoint"></app-coffee-card>
   </article>
 </section>
