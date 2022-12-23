@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgxBootstrapIconsModule, github, linkedin } from 'ngx-bootstrap-icons';
+import { StoreModule } from '@ngrx/store';
+import { ROOT_REDUCERS } from './state/app.state';
 
 const icons = {
   github,
@@ -25,6 +27,7 @@ const icons = {
     ToolbarComponent,
     FooterComponent,
     NgxBootstrapIconsModule.pick(icons),
+    StoreModule.forRoot(ROOT_REDUCERS),
   ],
   providers: [],
   bootstrap: [AppComponent],
