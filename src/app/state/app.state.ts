@@ -1,6 +1,6 @@
 import { ActionReducerMap } from '@ngrx/store';
 import { FavoritesState } from '../core';
-import { favoritesReducer } from './reducers/favorites.reducer';
+import { favoritesReducer } from './favorites/favorites.reducer';
 
 export interface AppState {
   favoriteList: FavoritesState;
