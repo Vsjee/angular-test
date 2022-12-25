@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services';
+import { privateRoutes } from 'src/app/models';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,6 @@ export class LoginComponent {
     if (this.name.value !== null && this.password.value !== null) {
       this.auth.authenticate(this.name.value, this.password.value);
     }
-    this.router.navigate(['./favorites']);
+    this.router.navigate([`./${privateRoutes.FAVORITES}`]);
   }
 }
