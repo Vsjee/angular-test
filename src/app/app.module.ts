@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NgxBootstrapIconsModule, github, linkedin } from 'ngx-bootstrap-icons';
 import { StoreModule } from '@ngrx/store';
 import { ROOT_REDUCERS } from './state/app.state';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 const icons = {
   github,
@@ -28,6 +29,11 @@ const icons = {
     FooterComponent,
     NgxBootstrapIconsModule.pick(icons),
     StoreModule.forRoot(ROOT_REDUCERS),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+      autoPause: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
