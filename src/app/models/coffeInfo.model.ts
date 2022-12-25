@@ -5,3 +5,11 @@ export interface CoffeeInfo {
   description: string;
   ingredients: string[];
 }
+
+export const initializeCoffeeInfo = {
+  id: 0,
+  title: '',
+  image: '',
+  description: '',
+  ingredients: [''],
+};
