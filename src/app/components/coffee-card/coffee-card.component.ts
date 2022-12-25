@@ -1,19 +1,43 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { CoffeeInfo } from 'src/app/models';
+import { CoffeeInfo, initializeCoffeeInfo } from 'src/app/models';
+import { Store } from '@ngrx/store';
+import { addFavoriteItem } from 'src/app/state/favorites/favorites.actions';
+import { GetCoffeeService } from 'src/app/services';
+import { FavoritesInfo } from 'src/app/core';
+import { AppState } from 'src/app/state';
+import { MatIconModule } from '@angular/material/icon';
+import { Route, RouteConfigLoadEnd, Router } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, MatCardModule],
+  imports: [CommonModule, MatCardModule, MatIconModule],
   selector: 'app-coffee-card',
   templateUrl: './coffee-card.component.html',
   styleUrls: ['./coffee-card.component.scss'],
 })
-export class CoffeeCardComponent implements OnInit {
-  @Input() info: CoffeeInfo | any = {};
+export class CoffeeCardComponent {
+  @Input() info: CoffeeInfo = initializeCoffeeInfo;
+  @Input() endpoint: string = '';
 
-  constructor() {}
+  constructor(
+    private store: Store<AppState>,
+    private http: GetCoffeeService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {}
+  dispatchSomething() {
+    if (this.router.url !== '/favorites') {
+      this.http.getCoffees(this.endpoint).subscribe((item: any) => {
+        item.filter((item: FavoritesInfo) => {
+          if (item.id === this.info.id) {
+            this.store.dispatch(addFavoriteItem({ favorites: item }));
+          }
+        });
+      });
+    } else {
+      console.log(this.router.url);
+    }
+  }
 }
