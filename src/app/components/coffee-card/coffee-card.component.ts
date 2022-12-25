@@ -1,14 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { CoffeeInfo, initializeCoffeeInfo } from 'src/app/models';
 import { Store } from '@ngrx/store';
-import { addFavoriteItem } from 'src/app/state/favorites/favorites.actions';
+import {
+  addFavoriteItem,
+  removeFavoriteItem,
+} from 'src/app/state/favorites/favorites.actions';
 import { GetCoffeeService } from 'src/app/services';
 import { FavoritesInfo } from 'src/app/core';
 import { AppState } from 'src/app/state';
 import { MatIconModule } from '@angular/material/icon';
-import { Route, RouteConfigLoadEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -37,7 +40,7 @@ export class CoffeeCardComponent {
         });
       });
     } else {
-      console.log(this.router.url);
+      this.store.dispatch(removeFavoriteItem({ title: this.info.title }));
     }
   }
 }

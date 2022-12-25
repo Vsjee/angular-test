@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { FavoritesState } from 'src/app/core';
-import { addFavoriteItem } from './favorites.actions';
+import { addFavoriteItem, removeFavoriteItem } from './favorites.actions';
 
 export const initialState: FavoritesState = { loading: false, favorites: [] };
 
@@ -18,5 +18,10 @@ export const favoritesReducer = createReducer(
         ingredients: [...favorites.ingredients],
       },
     ],
+  })),
+
+  on(removeFavoriteItem, (state, { title }) => ({
+    ...state,
+    favorites: [...state.favorites.filter((item) => item.title !== title)],
   }))
 );

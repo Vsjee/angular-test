@@ -9,3 +9,10 @@ export const addFavoriteItem = createAction(
     favorites: FavoritesInfo;
   }>()
 );
+
+export const removeFavoriteItem = createAction(
+  '[Favorites list] Remove favorite item success',
+  props<{
+    title: string;
+  }>()
+);
