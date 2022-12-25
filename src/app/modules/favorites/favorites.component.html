@@ -1,6 +1,7 @@
-<p>favorites works!</p>
-<h1>sdsd</h1>
-<h1>sdsd</h1>
-<h1>sdsd</h1>
-<h1>sdsd</h1>
-<h1>sdsd</h1>
+<h1>Favorites</h1>
+<section class="container">
+  <article *ngFor="let favorite of favoriteList" class="container__coffee">
+    <app-coffee-card [info]="favorite"></app-coffee-card>
+  </article>
+</section>
+{{ saveFavorites$ | async | json }}
