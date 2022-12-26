@@ -7,9 +7,8 @@ import {
   addFavoriteItem,
   removeFavoriteItem,
 } from 'src/app/state/favorites/favorites.actions';
-import { GetCoffeeService } from 'src/app/services';
 import { FavoritesInfo } from 'src/app/core';
-import { AppState } from 'src/app/state';
+import { AppState, selectFavoriteList } from 'src/app/state';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
@@ -24,23 +23,36 @@ export class CoffeeCardComponent {
   @Input() info: CoffeeInfo = initializeCoffeeInfo;
   @Input() endpoint: string = '';
 
-  constructor(
-    private store: Store<AppState>,
-    private http: GetCoffeeService,
-    private router: Router
-  ) {}
+  toggleIcon: boolean = false;
 
-  dispatchSomething() {
+  itemTitle: string = '';
+
+  constructor(private store: Store<AppState>, private router: Router) {}
+
+  addAndRemoveItem() {
     if (this.router.url !== '/favorites') {
-      this.http.getCoffees(this.endpoint).subscribe((item: any) => {
-        item.filter((item: FavoritesInfo) => {
-          if (item.id === this.info.id) {
-            this.store.dispatch(addFavoriteItem({ favorites: item }));
-          }
-        });
-      });
+      this.findItem();
+      if (this.itemTitle !== this.info.title) {
+        this.store.dispatch(addFavoriteItem({ favorites: this.info }));
+      }
     } else {
       this.store.dispatch(removeFavoriteItem({ title: this.info.title }));
     }
+  }
+
+  findItem() {
+    this.store
+      .select(selectFavoriteList)
+      .subscribe((listItems: FavoritesInfo[]) => {
+        listItems.find((item: FavoritesInfo) => {
+          return item.title !== this.info.title
+            ? (this.itemTitle = '')
+            : (this.itemTitle = this.info.title);
+        });
+      });
+  }
+
+  ngOnInit(): boolean {
+    return this.router.url !== '/favorites' ? false : (this.toggleIcon = true);
   }
 }
