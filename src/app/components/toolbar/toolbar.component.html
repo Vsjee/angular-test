@@ -21,6 +21,7 @@
         <mat-icon class="mat-icon">favorite</mat-icon>
       </button>
     </a>
+    <app-logout *ngIf="logoutBtn"></app-logout>
   </span>
 
   <span class="menuContainer" *ngIf="menu">
@@ -34,6 +35,17 @@
       <a routerLink="{{ publicRoutes.ICEDCOFFEE }}">
         <button mat-menu-item>Iced Coffee</button>
       </a>
+      <a routerLink="{{ privateRoutes.FAVORITES }}" class="favorite__link">
+        <button
+          mat-icon-button
+          class="example-icon favorite-icon"
+          aria-label="Example icon-button with heart icon"
+          style="width: 85%; margin: 0.5rem"
+        >
+          <mat-icon class="mat-icon">favorite</mat-icon>
+        </button>
+      </a>
+      <app-logout *ngIf="logoutBtn"></app-logout>
     </mat-menu>
   </span>
 </mat-toolbar>
