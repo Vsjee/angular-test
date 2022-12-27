@@ -11,6 +11,7 @@ import { FavoritesInfo } from 'src/app/core';
 import { AppState, selectFavoriteList } from 'src/app/state';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { SnackBarService } from 'src/app/services';
 
 @Component({
   standalone: true,
@@ -27,16 +28,24 @@ export class CoffeeCardComponent {
 
   itemTitle: string = '';
 
-  constructor(private store: Store<AppState>, private router: Router) {}
+  constructor(
+    private store: Store<AppState>,
+    private router: Router,
+    private snack: SnackBarService
+  ) {}
 
   addAndRemoveItem() {
     if (this.router.url !== '/favorites') {
       this.findItem();
       if (this.itemTitle !== this.info.title) {
         this.store.dispatch(addFavoriteItem({ favorites: this.info }));
+        this.snack.activateSnackBar(`${this.info.title} added to favorites`);
+      } else {
+        this.snack.activateSnackBar(`item already added`);
       }
     } else {
       this.store.dispatch(removeFavoriteItem({ title: this.info.title }));
+      this.snack.activateSnackBar(`${this.info.title} removed from favorites`);
     }
   }
 

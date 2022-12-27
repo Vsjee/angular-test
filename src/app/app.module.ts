@@ -12,6 +12,7 @@ import { NgxBootstrapIconsModule, github, linkedin } from 'ngx-bootstrap-icons';
 import { StoreModule } from '@ngrx/store';
 import { ROOT_REDUCERS } from './state/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const icons = {
   github,
@@ -27,6 +28,7 @@ const icons = {
     BrowserAnimationsModule,
     ToolbarComponent,
     FooterComponent,
+    MatSnackBarModule,
     NgxBootstrapIconsModule.pick(icons),
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({
