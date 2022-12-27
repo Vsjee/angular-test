@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-const authKey = 'auth';
+export const authKey = 'auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private router: Router) {}
-
   authenticate(name: string, password: string) {
     localStorage.setItem(
       authKey,

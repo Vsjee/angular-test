@@ -7,7 +7,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { publicRoutes, privateRoutes } from 'src/app/models';
 import { LogoutComponent } from '../logout';
 import { authKey } from 'src/app/services';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -34,10 +33,8 @@ export class ToolbarComponent {
   menuHidde: boolean = true;
 
   constructor(private router: Router) {
-    router.events.subscribe((event) => {
-      console.log(this.router.url);
+    router.events.subscribe(() => {
       const data = localStorage.getItem(authKey);
-      const data2 = data !== null ? JSON.parse(data) : null;
       if (data !== null) {
         this.logoutBtn = true;
       } else {
